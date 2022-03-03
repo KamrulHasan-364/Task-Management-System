@@ -6,7 +6,9 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import com.example.demo.entity.MemberEntity;
 import com.example.demo.entity.RoleAgain;
+import com.example.demo.services.MemberService;
 import com.example.demo.services.RoleService;
 
 @SpringBootTest
@@ -19,10 +21,23 @@ class TskProjApplicationTests {
 	
 	private @Autowired RoleService rs;
 	
+//	@Test
+//	public void tesSaveRole() {
+//		RoleAgain ob = rs.saveToDb();
+//		assertNotNull(ob);
+//	}
+	
+	private @Autowired MemberService ms;
+	
 	@Test
-	public void tesSaveRole() {
-		RoleAgain ob = rs.saveToDb();
-		assertNotNull(ob);
+	public void tesSaveMember() {
+		
+		MemberEntity mem = ms.saveToDb();
+		
+		assertNotNull(mem);
+		System.out.println("Success");
 	}
+	
+	
 
 }
