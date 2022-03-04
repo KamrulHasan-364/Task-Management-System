@@ -17,6 +17,20 @@ public class RoleAgain {
 	
 	@Column
 	private String name;
+	
+	public RoleAgain() {}
+
+	public RoleAgain(Long id, String name) {
+		super();
+		this.id = id;
+		this.name = name;
+	}
+	
+	public RoleAgain(String name) {
+		super();
+		
+		this.name = name;
+	}
 
 	public Long getId() {
 		return id;
@@ -36,8 +50,10 @@ public class RoleAgain {
 
 	@Override
 	public String toString() {
-		return "RoleAgain [id=" + id + ", name=" + name + "]";
+		return this.name;
 	}
+
+
 	
 	
 }

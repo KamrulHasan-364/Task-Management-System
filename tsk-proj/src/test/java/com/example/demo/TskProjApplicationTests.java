@@ -29,14 +29,8 @@ class TskProjApplicationTests {
 	
 	private @Autowired MemberService ms;
 	
-	@Test
-	public void tesSaveMember() {
-		
-		MemberEntity mem = ms.saveToDb();
-		
-		assertNotNull(mem);
-		System.out.println("Success");
-	}
+
+	
 	
 	
 

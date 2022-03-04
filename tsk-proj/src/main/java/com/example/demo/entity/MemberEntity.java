@@ -1,5 +1,9 @@
 package com.example.demo.entity;
 
+import java.util.HashSet;
+import java.util.Set;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -7,6 +11,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -16,20 +22,7 @@ public class MemberEntity {
 	
 	
 
-	public MemberEntity() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
 	
-	
-
-	public MemberEntity(Long memberID, String memberName, String memberPhone, RoleAgain roleAgain) {
-		super();
-		this.memberID = memberID;
-		this.memberName = memberName;
-		this.memberPhone = memberPhone;
-	}
-
 
 
 	@Id
@@ -38,70 +31,61 @@ public class MemberEntity {
 	
 	@Column
 	private String memberName;
+	@Column
 	private String memberPhone;
 	
-	@OneToMany
-	@JoinColumn(name="id", nullable=false)
-	private RoleAgain roleAgain;
 	
+	
+
+
+	public MemberEntity(String memberName, String memberPhone) {
+		super();
+		this.memberName = memberName;
+		this.memberPhone = memberPhone;
+	}
+
+	@ManyToMany(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
+	@JoinTable(name="member_role",
+				joinColumns = @JoinColumn(name="memberID"),
+				inverseJoinColumns = @JoinColumn(name="id"))
+	private Set<RoleAgain> roles = new HashSet<>();
 
 	public Long getMemberID() {
 		return memberID;
 	}
 
-
-
 	public void setMemberID(Long memberID) {
 		this.memberID = memberID;
 	}
-
-
 
 	public String getMemberName() {
 		return memberName;
 	}
 
-
-
 	public void setMemberName(String memberName) {
 		this.memberName = memberName;
 	}
-
-
 
 	public String getMemberPhone() {
 		return memberPhone;
 	}
 
-
-
 	public void setMemberPhone(String memberPhone) {
 		this.memberPhone = memberPhone;
 	}
 
-
-
-	public RoleAgain getRoleAgain() {
-		return roleAgain;
+	public Set<RoleAgain> getRoles() {
+		return roles;
 	}
 
-
-
-	public void setRoleAgain(RoleAgain roleAgain) {
-		this.roleAgain = roleAgain;
+	public void setRoles(Set<RoleAgain> roles) {
+		this.roles = roles;
 	}
 	
+	public void addrole(RoleAgain role) {
+		this.roles.add(role);
+	}
 	
-
-//	public Long getRoleId() {
-//		return roleId;
-//	}
-//
-//
-//
-//	public void setRoleId(Long roleId) {
-//		this.roleId = roleId;
-//	}
 
 
 

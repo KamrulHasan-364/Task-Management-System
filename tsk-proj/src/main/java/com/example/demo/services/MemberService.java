@@ -13,19 +13,22 @@ public class MemberService {
 	@Autowired
 	private MemberRepo memberRepo;
 	
-	
-	public MemberEntity saveToDb() {
-		
-		
-		MemberEntity memberEntity = new MemberEntity();
-		
-		memberEntity.setMemberName("Kamrul Hasan");
-		memberEntity.setMemberPhone("01521205896");
-		
-//		memberEntity.setRoleId(1l);
-		
-		memberEntity=memberRepo.save(memberEntity);
-		
-		return memberEntity;
-	}
+
 }
+	
+	
+//	public MemberEntity saveToDb() {
+//		
+//		
+////		MemberEntity memberEntity = new MemberEntity();
+////		
+////		memberEntity.setMemberName("Kamrul Hasan");
+////		memberEntity.setMemberPhone("01521205896");
+////		
+//////		memberEntity.setRoleId(1l);
+////		
+////		memberEntity=memberRepo.save(memberEntity);
+////		
+////		return memberEntity;
+////	}
+//}
