@@ -1,6 +1,7 @@
 package com.example.demo.entity;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -13,8 +14,11 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table
@@ -34,21 +38,29 @@ public class MemberEntity {
 	@Column
 	private String memberPhone;
 	
-	
-	
+	@ManyToMany(fetch=FetchType.LAZY,
+			cascade= {CascadeType.PERSIST, CascadeType.MERGE,
+			 CascadeType.DETACH, CascadeType.REFRESH})
+	@JoinTable(
+			name="role_member",
+			joinColumns=@JoinColumn(name="memberID"),
+			inverseJoinColumns=@JoinColumn(name="id")
+			)
+	@JsonIgnore
+	private List<RoleAgain> roles;
 
+	public MemberEntity() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 
 	public MemberEntity(String memberName, String memberPhone) {
 		super();
+		
 		this.memberName = memberName;
 		this.memberPhone = memberPhone;
+	
 	}
-
-	@ManyToMany(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
-	@JoinTable(name="member_role",
-				joinColumns = @JoinColumn(name="memberID"),
-				inverseJoinColumns = @JoinColumn(name="id"))
-	private Set<RoleAgain> roles = new HashSet<>();
 
 	public Long getMemberID() {
 		return memberID;
@@ -74,17 +86,27 @@ public class MemberEntity {
 		this.memberPhone = memberPhone;
 	}
 
-	public Set<RoleAgain> getRoles() {
+	public List<RoleAgain> getRoles() {
 		return roles;
 	}
 
-	public void setRoles(Set<RoleAgain> roles) {
+	public void setRoles(List<RoleAgain> roles) {
 		this.roles = roles;
 	}
 	
-	public void addrole(RoleAgain role) {
-		this.roles.add(role);
+	public void addRole(RoleAgain roleAgain) {
+		
+		 this.roles.add(roleAgain);
 	}
+
+	@Override
+	public String toString() {
+		return "MemberEntity [memberID=" + memberID + ", memberName=" + memberName + ", memberPhone=" + memberPhone
+				+ ", roles=" + roles + "]";
+	}
+	
+	
+	
 	
 
 

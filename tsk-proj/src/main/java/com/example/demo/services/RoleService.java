@@ -1,25 +1,18 @@
 package com.example.demo.services;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+import java.util.List;
 
 import com.example.demo.entity.RoleAgain;
-import com.example.demo.repository.Rolerepo;
 
-@Service
-public class RoleService {
+public interface RoleService {
 
-	@Autowired
-	private Rolerepo  rolerep;
+	public void insert (RoleAgain roleAgain);
+		
+	public void update(RoleAgain roleAgain, long roleid);
 	
-	public RoleAgain saveToDb() {
-
-		RoleAgain rolen = new RoleAgain();
-		rolen.setName("Manager");
-		
-		rolen = rolerep.save(rolen);
-		System.out.println(rolen.toString());
-		
-		return rolen;
-	}
+	public void delete (long id);
+	public RoleAgain getRoleByName(String rolename);
+	
+	public RoleAgain getRole(long roleid);
+	public List<RoleAgain> getAllRole();
 }
