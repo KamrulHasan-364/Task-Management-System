@@ -1,4 +1,4 @@
-package com.example.demo.entity;
+package com.example.demo.model.entity;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -17,6 +17,10 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import org.hibernate.validator.constraints.NotEmpty;
+
+import net.bytebuddy.implementation.bind.annotation.Empty;
 
 
 

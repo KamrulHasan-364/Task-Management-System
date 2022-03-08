@@ -2,11 +2,11 @@ package com.example.demo.services;
 
 import java.util.List;
 
-import com.example.demo.entity.RoleAgain;
+import com.example.demo.model.entity.RoleAgain;
 
 public interface RoleService {
 
-	public void insert (RoleAgain roleAgain);
+	public RoleAgain insert(RoleAgain roleAgain);
 		
 	public void update(RoleAgain roleAgain, long roleid);
 	

@@ -4,6 +4,8 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -14,7 +16,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.example.demo.entity.RoleAgain;
+import com.example.demo.model.entity.RoleAgain;
 import com.example.demo.services.RoleServiceImpl;
 
 @Controller
@@ -24,16 +26,17 @@ public class RoleController {
 	@Autowired
 	RoleServiceImpl rolserimpl;
 
-	@RequestMapping("/rolepage")
-	public String insertrolepage() {
-
-		return "roleform";
+	@RequestMapping("/roleform")
+	public String insertrolepage(Model model) {
+		RoleAgain roleAgain= new RoleAgain();
+		model.addAttribute("roleEntity", roleAgain);
+		return "roletable";
 	}
 
-	@RequestMapping("/tablepage")
+	@RequestMapping("/roletable")
 	public String tablepage() {
 
-		return "roletable";
+		return "roleform";
 
 	}
 
@@ -43,11 +46,13 @@ public class RoleController {
 		return "editrole";
 	}
 	
-	@PostMapping("/saverole")
-	@ResponseBody	
-	public void inserRole(@ModelAttribute("roleagain")RoleAgain roleAgain ) {
+	@PostMapping("/saveform")
+	
+	public String insertRole(@ModelAttribute("roleEntity") RoleAgain roleAgain, Model model ) {
 		
-		this.rolserimpl.insert(roleAgain);
+		RoleAgain name= this.rolserimpl.insert(roleAgain);
+		model.addAttribute("name", name);
+		return "redirect:/roletable";
 	}
 	
 	@PutMapping("/edit/{id}")
@@ -74,12 +79,13 @@ public class RoleController {
 		return role;
 	}
 	
-	@GetMapping("/getall")
-	@ResponseBody
-	public List<RoleAgain> getallrole(){
+	@GetMapping(value= {"/","/roletable"})
+	public String getallrole(ModelMap model){
 		
 		List<RoleAgain> allRole = this.rolserimpl.getAllRole();
-		return allRole;
+		model.addAttribute("dataList", allRole);
+		
+		return "roletable";
 	}
 	
 	@GetMapping("/getbyname/{name}")

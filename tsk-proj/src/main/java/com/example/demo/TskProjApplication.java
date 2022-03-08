@@ -6,7 +6,7 @@ import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
-import com.example.demo.entity.RoleAgain;
+import com.example.demo.model.entity.RoleAgain;
 import com.example.demo.repository.Rolerepo;
 
 

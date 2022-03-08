@@ -1,4 +1,4 @@
-package com.example.demo.entity;
+package com.example.demo.model.entity;
 
 import java.util.HashSet;
 import java.util.List;
@@ -37,17 +37,6 @@ public class MemberEntity {
 	private String memberName;
 	@Column
 	private String memberPhone;
-	
-	@ManyToMany(fetch=FetchType.LAZY,
-			cascade= {CascadeType.PERSIST, CascadeType.MERGE,
-			 CascadeType.DETACH, CascadeType.REFRESH})
-	@JoinTable(
-			name="role_member",
-			joinColumns=@JoinColumn(name="memberID"),
-			inverseJoinColumns=@JoinColumn(name="id")
-			)
-	@JsonIgnore
-	private List<RoleAgain> roles;
 
 	public MemberEntity() {
 		super();
@@ -86,23 +75,10 @@ public class MemberEntity {
 		this.memberPhone = memberPhone;
 	}
 
-	public List<RoleAgain> getRoles() {
-		return roles;
-	}
-
-	public void setRoles(List<RoleAgain> roles) {
-		this.roles = roles;
-	}
-	
-	public void addRole(RoleAgain roleAgain) {
-		
-		 this.roles.add(roleAgain);
-	}
-
 	@Override
 	public String toString() {
 		return "MemberEntity [memberID=" + memberID + ", memberName=" + memberName + ", memberPhone=" + memberPhone
-				+ ", roles=" + roles + "]";
+				+ ".";
 	}
 	
 	

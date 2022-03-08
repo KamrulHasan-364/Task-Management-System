@@ -5,7 +5,10 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.example.demo.entity.RoleAgain;
+import com.example.demo.model.entity.MemberEntity;
+import com.example.demo.model.entity.MemberRole;
+import com.example.demo.model.entity.RoleAgain;
+import com.example.demo.repository.MemberRoleRepo;
 import com.example.demo.repository.Rolerepo;
 
 @Service
@@ -14,11 +17,16 @@ public class RoleServiceImpl implements RoleService {
 	@Autowired
 	Rolerepo rolrep;
 	
+	@Autowired
+	MemberRoleRepo mmRoleRepo;
+	
 	@Override
-	public void insert(RoleAgain roleAgain) {
+	public RoleAgain insert(RoleAgain roleAgain) {
 		// TODO Auto-generated method stub
-		this.rolrep.save(roleAgain);
+		RoleAgain save = this.rolrep.save(roleAgain);
+		return save;
 	}
+	
 
 	@Override
 	public void update(RoleAgain roleAgain, long roleid) {
