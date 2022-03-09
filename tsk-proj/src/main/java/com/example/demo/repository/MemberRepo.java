@@ -7,9 +7,11 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
 import com.example.demo.model.entity.MemberEntity;
+import com.example.demo.model.entity.RoleAgain;
 
 
 
 public interface MemberRepo extends JpaRepository <MemberEntity, Long> {
-	List<MemberEntity> findByMemberName(String memberName);
+	
+	
 }

@@ -2,6 +2,7 @@ package com.example.demo.services;
 
 import java.util.List;
 
+import com.example.demo.model.dto.AddMemberDto;
 import com.example.demo.model.entity.MemberEntity;
 
 
@@ -19,6 +20,7 @@ public interface MemberService {
 //	public MemberEntity getMemberById(long id);
 	
 	public List<MemberEntity> getAllMember();
+	public List<AddMemberDto> getAllMemberDto();
 	
 //	public  List<MemberEntity> getMemberByRoleId(long roleid);
 }

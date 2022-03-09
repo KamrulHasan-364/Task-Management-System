@@ -17,7 +17,7 @@
 	</div>
 	
 	<div>
-		<h4><a href="/membertable.jsp">Go to Member Table</a></h4>
+		<h4><a href="/member/membertable">Go to Member Table</a></h4>
 	</div>
 	<div>
 		<h4><a href="/role/roletable">Go to Role Table</a></h4>

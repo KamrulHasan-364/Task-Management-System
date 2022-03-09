@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -31,16 +31,16 @@
 						<tr>
 							<th width="40%">Member Name</th>
 							<th width="40%">Phone Number</th>
-							<th width="20%"></th>
+
 						</tr>
 					</thead>
 					<tbody>
-						<c:forEach items="${todos}" var="todo">
+						<c:forEach var="mem" items="${memberList}">
 							<tr>
-								<td>${todo.description}</td>
-								<td><fmt:formatDate value="${todo.targetDate}" /></td>
-								<td><a type="button" class="btn btn-success" href="">Update</a>
-									<a type="button" class="btn btn-warning" href="">Delete</a></td>
+								<td>${mem.memberName}</td>
+								<td>${mem.memberPhone}</td>
+								<td><button id="btnTask">Task</button></td>
+
 							</tr>
 						</c:forEach>
 					</tbody>
@@ -49,5 +49,9 @@
 		</div>
 
 	</div>
+	
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js" integrity="sha512-3P8rXCuGJdNZOnUx/03c1jOTnMn3rP63nBip5gOP2qmUh5YAdVAvFZ1E+QLZZbC1rtMrQb+mah3AfYW11RUrWA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+	
+	<script type="text/javascript" src="member.js"></script>
 </body>
 </html>

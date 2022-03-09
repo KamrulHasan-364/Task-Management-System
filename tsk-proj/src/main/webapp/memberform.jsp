@@ -21,7 +21,7 @@
 		<h1>Member's Register Form</h1>
 		<div class="card">
 			<div class="card-body">
-				<form:form action="savemem" method="post">
+				<form:form action="/member/savemem" method="post" modelAttribute="memberEntity">
 
 					<div class="form-group row">
 						<label for="memberName" class="col-sm-2 col-form-label">
@@ -41,20 +41,25 @@
 					</div>
 					<div class="row">
 
-						<label class="col-md-2 control-lable" for="userProfiles">Tasks</label>
+						<label class="col-md-2 control-lable" for="">Tasks</label>
 						<div class="col-md-7">
-							<form:select path="userProfiles" items="${roles}" multiple="true"
-								itemValue="id" itemLabel="type" class="form-control input-sm" />
+							<select name="roleId" id="taskSel" class="form-control">
+							</select>
 						</div>
 
 					</div>
 
 					<div class="text-center">
-						<button type="submit" class="btn btn-primary">Submit</button>
+						<button type="submit" id ="saveBtn" class="btn btn-primary">Submit</button>
 					</div>
 				</form:form>
 			</div>
 		</div>
 	</div>
+	
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js" integrity="sha512-3P8rXCuGJdNZOnUx/03c1jOTnMn3rP63nBip5gOP2qmUh5YAdVAvFZ1E+QLZZbC1rtMrQb+mah3AfYW11RUrWA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+	
+	<script type="text/javascript" src="member.js"></script>
+	
 </body>
 </html>
