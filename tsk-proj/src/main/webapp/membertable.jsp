@@ -39,7 +39,7 @@
 							<tr>
 								<td>${mem.memberName}</td>
 								<td>${mem.memberPhone}</td>
-								<td><button id="btnTask">Task</button></td>
+								
 
 							</tr>
 						</c:forEach>

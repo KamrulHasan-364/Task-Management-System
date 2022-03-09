@@ -3,8 +3,7 @@ $(document).ready(function() {
 	var select = $("#taskSel");
 	loadTasksData(select);
 
-	var button = $("#btnTask");
-	loadMemberTask(button);
+	
 
 	// $(document).on('click', '#saveBtn', function() {
 	// alert("Clicked..")
@@ -12,9 +11,7 @@ $(document).ready(function() {
 
 });
 
-function loadMemberTask(button) {
-	var apiurl="";
-}
+
 
 function loadTasksData(select) {
 	var apiUrl = "/role/list";
