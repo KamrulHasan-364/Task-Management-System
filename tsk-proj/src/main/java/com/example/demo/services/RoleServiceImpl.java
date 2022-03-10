@@ -12,22 +12,19 @@ import com.example.demo.repository.MemberRoleRepo;
 import com.example.demo.repository.Rolerepo;
 
 @Service
-public class RoleServiceImpl implements RoleService {
+public class RoleServiceImpl  {
 
 	@Autowired
 	Rolerepo rolrep;
 
-	@Autowired
-	MemberRoleRepo mmRoleRepo;
-
-	@Override
+	
 	public List<RoleAgain> getAllRole() {
 		// TODO Auto-generated method stub
 		List<RoleAgain> findAll = this.rolrep.findAll();
 		return findAll;
 	}
 
-	@Override
+	
 	public RoleAgain insert(RoleAgain roleAgain) {
 		// TODO Auto-generated method stub
 		RoleAgain save = this.rolrep.save(roleAgain);
@@ -37,33 +34,21 @@ public class RoleServiceImpl implements RoleService {
 	
 	
 	
-	@Override
-	public void update(RoleAgain roleAgain, long roleid) {
-		// TODO Auto-generated method stub
-		roleAgain.setId(roleid);
-		this.rolrep.save(roleAgain);
-	}
-
-	@Override
-	public void delete(long id) {
-		// TODO Auto-generated method stub
-		this.rolrep.deleteById(id);
-	}
-
-	@Override
-	public RoleAgain getRoleByName(String rolename) {
-		// TODO Auto-generated method stub
-		RoleAgain findByName = this.rolrep.findByName(rolename);
-		return findByName;
-	}
-
-	@Override
-	public RoleAgain getRole(long roleid) {
-		// TODO Auto-generated method stub
-
-		RoleAgain byId = this.rolrep.getById(roleid);
-		return byId;
-	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+//	public RoleAgain getRole(long roleid) {
+//		// TODO Auto-generated method stub
+//
+//		RoleAgain byId = this.rolrep.getById(roleid);
+//		return byId;
+//	}
 
 
 

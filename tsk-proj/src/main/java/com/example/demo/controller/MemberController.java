@@ -1,5 +1,6 @@
 package com.example.demo.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,6 +25,7 @@ import com.example.demo.model.entity.MemberEntity;
 import com.example.demo.model.entity.RoleAgain;
 import com.example.demo.repository.MemberRepo;
 import com.example.demo.repository.MemberRoleRepo;
+import com.example.demo.repository.Rolerepo;
 import com.example.demo.services.MemberServiceImple;
 import com.example.demo.services.RoleServiceImpl;
 
@@ -37,26 +39,36 @@ public class MemberController {
 	MemberServiceImple membrim;
 	@Autowired
 	MemberRoleRepo memberRoleRepo;
-	
-	
- 
 
+	@Autowired
+	Rolerepo roleRepo;
+
+	@GetMapping("/newmembertable")
+	public String showCreatNewMemberForm(Model model) {
+		List<RoleAgain> listRole = roleRepo.findAll();
+		model.addAttribute("listRole", listRole);
+		model.addAttribute("member", new MemberEntity());
+
+		return "memberform";
+	}
 
 	@GetMapping("/membertable")
 	public String getallmem(ModelMap model) {
 
 		List<MemberEntity> allmem = this.membrim.getAllMember();
-		
+
 		model.addAttribute("memberList", allmem);
 
 		return "membertable";
 	}
 
 	@PostMapping("/savemem")
-	@ResponseBody
 	public String inserMem(@ModelAttribute("memberEntity") AddMemberDto dto, Model model) {
 
 		AddMemberDto saveNewMember = this.membrim.saveNewMember(dto);
+		//ArrayList<AddMemberDto> list = new ArrayList<AddMemberDto>();
+		
+		
 
 		model.addAttribute("memberName", saveNewMember);
 		model.addAttribute("memberPhone", saveNewMember);
@@ -64,8 +76,7 @@ public class MemberController {
 
 		return "redirect:/member/membertable";
 	}
-	
-	
+
 //	@RequestMapping("/edit")
 //	public String editform() {
 //

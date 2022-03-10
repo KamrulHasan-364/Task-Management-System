@@ -42,9 +42,17 @@
 					<div class="row">
 
 						<label class="col-md-2 control-lable" for="">Tasks</label>
-						<div class="col-md-7">
-							<select name="roleId" id="taskSel" class="form-control">
-							</select>
+						<div class="col-md-7 text-left">
+							 <select  name="roleIdList" id="taskSel" class="form-control" multiple="multiple">
+							
+							 </select> 
+						<!--	<c:forEach var="role" items="${listRole}">
+							<div>
+								<input id="taskSel" type="checkbox" text="${role.name }" value="${role.id}"	/>						
+							</div>
+							
+							</c:forEach>  --> 
+							
 						</div>
 
 					</div>

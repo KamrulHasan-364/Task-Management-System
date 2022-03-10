@@ -1,5 +1,5 @@
 $(document).ready(function() {
-
+	
 	var select = $("#taskSel");
 	loadTasksData(select);
 
@@ -30,6 +30,8 @@ function loadTasksData(select) {
 						+ "</option>");
 				select.append(option);
 			});
+		
+			select.multiselect();
 		}
 	});
 }

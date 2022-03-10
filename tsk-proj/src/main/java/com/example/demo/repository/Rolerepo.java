@@ -8,6 +8,6 @@ import com.example.demo.model.entity.RoleAgain;
 
 public interface Rolerepo extends JpaRepository<RoleAgain, Long> {
 
-	public RoleAgain findByName(String name); 
+
 	
 }
